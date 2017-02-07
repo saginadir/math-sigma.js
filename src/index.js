@@ -1,14 +1,11 @@
-const reduce = (fn, arr) => arr.reduce(fn, 0);
-
-const add = (x, y) => x + y;
-
 // -- Sum Func ------------------ //
 
-const sum = (fn, from, to, total = []) => {
-  if ( from > to ) return reduce(add, total);
+const sum = (fn, from, to, total = 0) => {
+  for(let x = from; x <= to; x += 1) {
+    total += fn(x);
+  }
 
-  total.push(fn(from));
-  return sum(fn, from + 1, to, total);
+  return total;
 };
 
 module.exports = sum;
